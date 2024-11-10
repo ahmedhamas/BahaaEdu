@@ -38,11 +38,13 @@ app.use("/api/teacher", TeacherRouter);
 app.use("/api/grades", GradesRouter);
 
 app.use((req, res, next) => {
+   console.log(req.url);
   if (req.url.includes("api")) {
     next();
   } else {
     res.sendFile(path.join(__dirname, "..", "public", "index.html"));
   }
+  console.log(res.url);
 });
 
 app.listen(port, () => console.log(`http://localhost:${port}`));
